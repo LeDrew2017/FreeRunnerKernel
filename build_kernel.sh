@@ -26,6 +26,9 @@ fi
 
 mkdir -p "$FREERUNNER_OUTPUT" "$TEMP_DIR"
 
+# Get latest git tag (for changelog later)
+LAST_TAG=$(git describe --tags --abbrev=0)
+
 # Loop through devices
 for DEVICE in "${DEVICES[@]}"; do
     echo -e "\n🔧 Building for: $DEVICE"
@@ -95,31 +98,32 @@ for DEVICE in "${DEVICES[@]}"; do
     fi
 done
 
-# All builds are done, now prompt for release
+# Cleanup build output directories (keep only magiskboot)
+for DIR in "$BOOTIMAGE_BASE"/*/; do
+    find "$DIR" -type f ! -name "magiskboot" -delete
+done
+
+# All builds are done
 echo -e "\n📦 All device builds complete."
 
 read -p "📝 Do you want to create a GitHub release for FrEeRuNnErKeRnEl-$KERNEL_VERSION? (yes/no): " RELEASE_ANSWER
 
 if [[ "$RELEASE_ANSWER" =~ ^[Yy][Ee][Ss]$ ]]; then
-    echo "🌐 Logging in to GitHub CLI..."
-    gh auth login
+    # Tag the release
+    git tag "v${KERNEL_VERSION}"
+    git push origin "v${KERNEL_VERSION}"
 
-    RELEASE_TAG="$KERNEL_VERSION"
-    RELEASE_TITLE="FrEeRuNnErKeRnEl-$KERNEL_VERSION"
+    # Generate auto-changelog
+    echo "🧾 Generating changelog from commits since $LAST_TAG..."
+    CHANGELOG=$(git log "$LAST_TAG"..HEAD --pretty=format:"- %h %s" --no-merges)
 
-    echo "🚀 Creating GitHub release $RELEASE_TITLE with tag $RELEASE_TAG"
-    gh release create "$RELEASE_TAG" "$FREERUNNER_OUTPUT"/*."img" "$FREERUNNER_OUTPUT"/*.tar.md5 \
-        --title "$RELEASE_TITLE" \
+    echo "🚀 Creating GitHub release FrEeRuNnErKeRnEl-$KERNEL_VERSION..."
+    gh release create "FrEeRuNnErKeRnEl-$KERNEL_VERSION" "$FREERUNNER_OUTPUT"/*."img" "$FREERUNNER_OUTPUT"/*.tar.md5 \
+        --title "FrEeRuNnErKeRnEl-$KERNEL_VERSION" \
+        --notes "$CHANGELOG" \
         --repo "LeDrew2017/FreeRunnerKernel" \
         --draft
-
-    echo "🚀 Release $RELEASE_TITLE created."
 else
     echo "🚫 Release skipped."
 fi
-
-# Cleanup - remove all files in bootimage directories except magiskboot
-echo -e "\n🧹 Cleaning up unnecessary files in $BOOTIMAGE_BASE"
-find "$BOOTIMAGE_BASE" -type f ! -name 'magiskboot' -exec rm -f {} \;
-echo "🧹 Cleanup completed!"
 
