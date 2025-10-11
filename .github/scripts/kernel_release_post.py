@@ -2,7 +2,7 @@
 import telebot
 import os
 import sys
-from datetime import datetime # New: Import the datetime library
+from datetime import datetime
 
 def getConfig(config_name: str):
     """Get configuration from environment variables."""
@@ -16,7 +16,6 @@ def getConfig(config_name: str):
 try:
     BOT_TOKEN = getConfig("TELEGRAM_BOT_TOKEN")
     CHAT_ID = getConfig("TELEGRAM_CHANNEL_ID")
-    TOPIC_ID = getConfig("TELEGRAM_TOPIC_ID")
     RELEASE_TAG = getConfig("RELEASE_TAG")
     RELEASE_URL = getConfig("RELEASE_URL")
     RELEASE_BODY = os.getenv("RELEASE_BODY", "No changelog provided.")
@@ -30,7 +29,7 @@ bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
 
 def generate_kernel_post_message():
     """Generate the kernel release message."""
-    current_date = datetime.now().strftime("%m/%d/%Y") # New: Get and format the current date
+    current_date = datetime.now().strftime("%m/%d/%Y")
     msg = f"🔥⚡️ <b>FrEeRuNnErKeRnEl-{RELEASE_TAG}</b>⚡️🔥\n\n"
     msg += "<b>Samsung Galaxy S10 Series, Samsung Galaxy Note 10 Series & Samsung Galaxy F62</b>\n\n"
     msg += f"<a href='{RELEASE_URL}'>Kernel release</a>\n"
@@ -62,7 +61,6 @@ def send_kernel_post():
             # Send text-only message if banner is missing
             bot.send_message(
                 chat_id=CHAT_ID,
-                message_thread_id=TOPIC_ID,
                 text=message
             )
         else:
@@ -70,12 +68,11 @@ def send_kernel_post():
             with open(BANNER_PATH, "rb") as banner:
                 bot.send_photo(
                     chat_id=CHAT_ID,
-                    message_thread_id=TOPIC_ID,
                     photo=banner,
                     caption=message
                 )
 
-        print(f"Successfully sent kernel release post to chat ID: {CHAT_ID}, topic: {TOPIC_ID}")
+        print(f"Successfully sent kernel release post to chat ID: {CHAT_ID}")
 
     except Exception as e:
         print(f"Failed to send post. Error: {e}")
