@@ -2,6 +2,7 @@
 import telebot
 import os
 import sys
+from datetime import datetime # New: Import the datetime library
 
 def getConfig(config_name: str):
     """Get configuration from environment variables."""
@@ -29,19 +30,20 @@ bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
 
 def generate_kernel_post_message():
     """Generate the kernel release message."""
-    msg = f"🔥⚡️ FrEeRuNnErKeRnEl-{RELEASE_TAG}⚡️🔥\n"
-    msg += "Samsung Galaxy S10 Series, Samsung Galaxy Note 10 Series & Samsung Galaxy F62\n"
+    current_date = datetime.now().strftime("%m/%d/%Y") # New: Get and format the current date
+    msg = f"🔥⚡️ <b>FrEeRuNnErKeRnEl-{RELEASE_TAG}</b>⚡️🔥\n\n"
+    msg += "<b>Samsung Galaxy S10 Series, Samsung Galaxy Note 10 Series & Samsung Galaxy F62</b>\n\n"
     msg += f"<a href='{RELEASE_URL}'>Kernel release</a>\n"
     msg += "<a href='https://github.com/ProjectMatrixx-exynos9820/android_kernel_samsung_exynos9820'>Kernel Source</a>\n"
-    msg += "<a href='https://github.com/KernelSU-Next/KernelSU-Next/releases'>KernelSU-Next Manager</a>\n"
+    msg += "<a href='https://github.com/KernelSU-Next/KernelSU-Next/releases'>KernelSU-Next Manager</a>\n\n"
 
-    msg += "Changelog:\n"
-    msg += f"{RELEASE_BODY}\n"
+    msg += f"<b>Changelog {current_date}:</b>\n"
+    msg += f"{RELEASE_BODY}\n\n"
 
-    msg += "Note: This kernel will only work on AOSP ONLY NOT ONEUI!\n"
-    msg += "Compatible with Android 15 & 16\n"
+    msg += "<b>Note:</b> This kernel will only work on AOSP ONLY NOT ONEUI!\n"
+    msg += "Compatible with Android 15 & 16\n\n"
 
-    msg += "Thanks: \n"
+    msg += "<b>Thanks:</b>\n"
     msg += "<a href='http://t.me/linux4'>linux4</a> for kernel\n"
     msg += "<a href='http://t.me/rifsxd'>rifsxd</a> for kernelsu-next\n"
     msg += "<a href='http://t.me/sidex15'>sidex15</a> for susfs4ksu\n"
