@@ -1,4 +1,3 @@
-
 name: Post Release to Telegram
 
 on:
@@ -20,6 +19,10 @@ jobs:
       - name: Install Dependencies
         run: pip install pyTelegramBotAPI
 
+      - name: Read Changelog
+        id: changelog
+        run: echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV && cat changelog.md >> $GITHUB_ENV && echo "EOF" >> $GITHUB_ENV
+
       - name: Run Kernel Release Poster Script
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -27,6 +30,6 @@ jobs:
           TELEGRAM_TOPIC_ID: ${{ secrets.TELEGRAM_TOPIC_ID }}
           RELEASE_TAG: ${{ github.event.release.tag_name }}
           RELEASE_URL: ${{ github.event.release.html_url }}
-          RELEASE_BODY: ${{ github.event.release.body }}
+          RELEASE_BODY: ${{ env.CHANGELOG_CONTENT }}
         run: |
           python .github/scripts/kernel_release_post.py

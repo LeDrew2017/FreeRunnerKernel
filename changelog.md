@@ -1,0 +1,8 @@
+- Bumped to FrEeRuNnErKeRnEl v3.2
+- Optimized EAS scheduler and reduced idle latencies
+- Increased minimum CPU frequencies and default QoS values
+- Adjusted target loads and reduced sample time to 40ms
+- Tuned thermal thresholds for better sustained performance
+- Fixed RT scheduler cpu_util bug and enabled WALT
+- Added additional CPU governors
+- Enabled LLVM MLGO compiler optimizations
