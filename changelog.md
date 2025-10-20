@@ -1,8 +1,5 @@
-- Bumped to FrEeRuNnErKeRnEl v3.2
-- Optimized EAS scheduler and reduced idle latencies
-- Increased minimum CPU frequencies and default QoS values
-- Adjusted target loads and reduced sample time to 40ms
-- Tuned thermal thresholds for better sustained performance
-- Fixed RT scheduler cpu_util bug and enabled WALT
-- Added additional CPU governors
-- Enabled LLVM MLGO compiler optimizations
+- Bumped to FrEeRuNnErKeRnEl v3.3
+- Intoduced SukiSU Ultra v3.2.0
+- Added Support for multiple KSU implementations (SukiSU Ultra & KernelSU Next)
+- Updated to latest KernelSU Next v1.1.1
+- Updated to latest Susfs v1.5.12
