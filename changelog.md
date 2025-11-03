@@ -1,5 +1,11 @@
-- Bumped to FrEeRuNnErKeRnEl v3.3
-- Intoduced SukiSU Ultra v3.2.0
-- Added Support for multiple KSU implementations (SukiSU Ultra & KernelSU Next)
-- Updated to latest KernelSU Next v1.1.1
-- Updated to latest Susfs v1.5.12
+- Bumped to FrEeRuNnErKeRnEl to v3.4
+- Introduced optimal per-device ZRAM configuration for improved multitasking
+- Updated memory pressure and reclaim tuning for 8 GB / 12 GB devices
+- Improved integer square root performance (3× faster)
+- Increased TCP memory tuning limits for higher network throughput
+- Added support for TheWildJames KernelSU Manager
+- Synced latest SukiSU Ultra changes (v3.2.0)
+- Enhanced IRQ performance handling and affinity safety checks
+- Applied Pixel 4 I/O scheduler optimizations and CFQ tweaks
+- Refined flash storage throttling and background cgroup filtering
+- General stability, responsiveness, and performance improvements
