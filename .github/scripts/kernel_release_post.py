@@ -36,6 +36,7 @@ def generate_kernel_post_message():
     msg += "<a href='https://github.com/ProjectMatrixx-exynos9820/android_kernel_samsung_exynos9820'>Kernel Source</a>\n"
     msg += "<a href='https://github.com/KernelSU-Next/KernelSU-Next/releases'>KernelSU-Next Manager</a>\n"
     msg += "<a href='https://github.com/SukiSU-Ultra/SukiSU-Ultra/releases'>SukiSU-Ultra Manager</a>\n\n"
+    msg += "<a href='https://github.com/WildKernels/Wild_KSU/releases'> Wild-KernelSU Manager</a>\n\n"
 
     msg += f"<b>Changelog {current_date}:</b>\n"
     msg += f"{RELEASE_BODY}\n\n"
