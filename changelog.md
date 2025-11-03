@@ -1,5 +1,1 @@
-- Bumped to FrEeRuNnErKeRnEl v3.3
-- Intoduced SukiSU Ultra v3.2.0
-- Added Support for multiple KSU implementations (SukiSU Ultra & KernelSU Next)
-- Updated to latest KernelSU Next v1.1.1
-- Updated to latest Susfs v1.5.12
+- Changelog is HERE: https://telegra.ph/FrEeRuNnErKeRnEl-V34-Changelog-11-04
