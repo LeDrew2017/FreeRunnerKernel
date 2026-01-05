@@ -35,8 +35,6 @@ def generate_kernel_post_message():
     msg += f"<a href='{RELEASE_URL}'>Kernel release</a>\n"
     msg += "<a href='https://github.com/ProjectMatrixx-exynos9820/android_kernel_samsung_exynos9820'>Kernel Source</a>\n"
     msg += "<a href='https://github.com/KernelSU-Next/KernelSU-Next/releases'>KernelSU-Next Manager</a>\n"
-    msg += "<a href='https://github.com/SukiSU-Ultra/SukiSU-Ultra/releases'>SukiSU-Ultra Manager</a>\n\n"
-    msg += "<a href='https://github.com/WildKernels/Wild_KSU/releases'> Wild-KernelSU Manager</a>\n\n"
 
     msg += f"<b>Changelog {current_date}:</b>\n"
     msg += f"{RELEASE_BODY}\n\n"
@@ -48,7 +46,6 @@ def generate_kernel_post_message():
     msg += "<a href='http://t.me/linux4'>linux4</a> for kernel\n"
     msg += "<a href='http://t.me/rifsxd'>rifsxd</a> for kernelsu-next\n"
     msg += "<a href='http://t.me/sidex15'>sidex15</a> for susfs4ksu\n"
-    msg += "<a href='http://t.me/ShirkNeko'>ShirkNeko</a> for SukiSU-Ultra\n"
     msg += "All testers"
 
     return msg
