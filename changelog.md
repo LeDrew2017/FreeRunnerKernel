@@ -1,1 +1,1 @@
-- Changelog is HERE: https://telegra.ph/FrEeRuNnErKeRnEl-V35-Changelog-01-05
+- Changelog is HERE: https://telegra.ph/FrEeRuNnErKeRnEl-V36-Changelog-02-10

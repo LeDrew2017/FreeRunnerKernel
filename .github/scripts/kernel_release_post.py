@@ -40,7 +40,7 @@ def generate_kernel_post_message():
     msg += f"{RELEASE_BODY}\n\n"
 
     msg += "<b>Note:</b> This kernel will only work on AOSP ONLY NOT ONEUI!\n"
-    msg += "Compatible with Android 15 & 16\n\n"
+    msg += "Compatible with Android 14-16\n\n"
 
     msg += "<b>Thanks:</b>\n"
     msg += "<a href='http://t.me/linux4'>linux4</a> for kernel\n"
