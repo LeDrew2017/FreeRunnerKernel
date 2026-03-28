@@ -44,7 +44,7 @@ def generate_kernel_post_message():
 
     msg += "<b>Thanks:</b>\n"
     msg += "<a href='http://t.me/linux4'>linux4</a> for kernel\n"
-    msg += "<a href='http://t.me/rifsxd'>rifsxd</a> for kernelsu-next\n"
+    msg += "<a href='http://t.me/rifsxd'>rifsxd</a> for KernelSU-Next\n"
     msg += "<a href='http://t.me/sidex15'>sidex15</a> for susfs4ksu\n"
     msg += "All testers"
 
